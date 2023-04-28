@@ -190,7 +190,7 @@ ENTRYPOINT `["python","app.py"]`
   ![preview](images/docker38.png)
   ![preview](images/docker39.png)
 
-### yama compose file
+### docker compose yml file
  Write any Docker compose file
 
 nop commerce
@@ -231,8 +231,10 @@ volumes:
   my-db:
 networks:
   nop-net: 
- 1. docker compose up -d
-![preview](images/compos1.png)
-![preview](images/compos2.png)
+  docker compose up -d
+
 ![preview](images/docker40.png)
+![preview](images/compos41.png)
+![preview](images/compos42.png)
+
  

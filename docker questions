@@ -1,0 +1,37 @@
+---
+ ###DOCKER
+a). Create an alpine container in interactive mode and install python
+b). Create an ubuntu container with sleep 1 d and then login using exec. 
+    Install python 
+c). Create a postgres container with user panoramic and password as trekking. 
+    Try logging in and show the databases (query for the psql) 
+d). Try creating a dockerfile which runs phpinfo page, user ARG and ENV 
+    wherever appropriate o on apache server o on nginx server 
+e). Create a Jenkins image by creating your own Dockerfile 
+f). Create nop commerce and my-sql server containers and try to make them work 
+    by configuring  
+3.Create a multistage docker file to build  
+  a).nop commerce  b)spring petclinic c)student courses register 
+
+4.Push the images to  
+  1).AWS ECR 
+  2).Azure ACR 
+5.Write a docker compose file for 
+  a).Nop Commerce 
+  b).Spring petclinic 
+  c).Game of life 
+  e).Student Courses Register 
+
+c) .Answer these questions to complete the application:
+
+1).Tell us about yourself?
+2).Explain Docker Images
+3).What are different ways of building docker images?
+4).What is Dockerfile
+5).How is container different than VM?
+6). Can you tell something about namespaces and how they are used in Docker?
+7). What is difference between ADD and COPY Instruction?
+8). Can you explain the concept of Layers in Docker Image
+9). What is the purpose of EXPOSE and VOLUME instruction in Dockerfile
+10).What is your workflow for CI/CD with Docker Containers and where do you 
+       store images?

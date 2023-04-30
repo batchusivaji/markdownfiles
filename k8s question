@@ -1,0 +1,11 @@
+----
+### Kubenetes
+A) activity-1
+   1) Write a Pod Spec for Spring PetClinic and nopCommerce Applications
+
+   2) Execute the kubectl commands:
+      kubectl get pods and describe pods
+B) activity-2
+   1) Explain Kubernetes architecture
+   2) Setup k8s on single node using minikube and kind
+   3) Run the Spring Pet Clinic

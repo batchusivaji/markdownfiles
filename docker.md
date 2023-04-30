@@ -106,7 +106,7 @@ CMD `[ "java","-jar"," target/game-of-life-1.0-SNAPSHOT.jar" ]`
 ![preview](images/docker22.png)
 ![preview](images/docker23.png)
 ![preview](images/docker24.png)
-    
+   
 
 
                 workbook3

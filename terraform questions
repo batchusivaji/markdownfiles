@@ -1,0 +1,19 @@
+---
+Answer these questions to complete the application:
+
+Tell us about yourself?
+Where is Terraform Used in DevOps?
+What is IAC
+What is module in terraform
+What steps should be followed for making an object of one module to be available for the other module at a high level?
+What is State File Locking?
+What is a Remote Backend in Terraform?
+What is a Tainted Resource?
+Does Terraform support multi-provider deployments?
+Define Resource Graph in Terraform.
+How can you define dependencies in Terraform?
+What happens when multiple engineers start deploying infrastructure using the same state file?
+Which value of the TF_LOG variable provides the MOST verbose logging?
+Which command can be used to preview the terraform execution plan?
+What is the benefit of Terraform State? What is the benefit of using modules in terraform?
+What’s a null resource in Terraform?

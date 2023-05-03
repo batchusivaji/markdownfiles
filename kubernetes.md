@@ -31,6 +31,7 @@ Now we have to apply below commands
   * ![preview](images/k8s-3.png)
  
 #### 2). Write a Pod Spec for Spring PetClinic
+-----------------------------------------------------------------------
 ```yml
 apiVersion: v1
 kind: Pod
@@ -44,7 +45,7 @@ spec:
         - containerPort: 8080
   ![preview](images/k8s-4.png)
   ![preview](images/k8s-5.png)
-
+----------------------------------------------------------------------------
 ###  Write a Pod Spec for nopcommerse
 ```yml
 apiVersion: v1
@@ -64,6 +65,7 @@ spec:
   
   ![preview](images/k8s-6.png)
   ![preview](images/k8s-7.png)
+  ----------------------------------------------------------------------
 
 ### K8S ARCHITECTURE
 
@@ -82,7 +84,7 @@ Worker nodes:
 * .kube-proxy:It handles all network communications outside and inside the cluster, forwarding traffic or replying on the packet filtering layer of the operating system. 
 * ![preview](images/k8s-8.png)
   
-
+----------------------------------------------------------------------------
 ### GAME OF LIFE
 first we create k8s pods like gol 
 ```yml
@@ -103,6 +105,7 @@ spec:
   * kubectl delete pods --all
   ![preview](images/k8s-9.png)
   ![preview](images/k8s-10.png)
+-----------------------------------------------------------------
 #### REPICASET manifest file
  * kubectl apply -f <replicaset.yml>     - 
   * kubectl get pods

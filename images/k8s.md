@@ -1,6 +1,6 @@
                         KUBERNETES
                       ---------------
-### 1) Write a Pod Spec for Spring PetClinic and nopCommerce Applications
+### 1) Write a Pod Spec for Spring PetClinic as well as nopCommerce Applications at the same spec EXPOSE ports spc & nop
 ANS: first we create k8s pods like spc & nop
  ---
 apiVersion: v1

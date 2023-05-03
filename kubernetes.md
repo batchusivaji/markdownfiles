@@ -69,7 +69,7 @@ spec:
   ![preview](images/k8s-7.png)
   ----------------------------------------------------------------------
 
-### K8S ARCHITECTURE
+## K8S ARCHITECTURE
 
 * .Kubernetes is an architecture that offers a loosely coupled mechanism for service discovery across a cluster. A Kubernetes cluster has one or more control planes, and one or more compute nodes.
 * .Environments running Kubernetes consist of the following key components:

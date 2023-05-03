@@ -24,9 +24,9 @@ Now we have to apply below commands
   * kubectl get pods
   * kubectl get pods -o wide
   * kubectl describe pods (podname)
-  * ![preview](k8s-1.png)
-  * ![preview](k8s-2.png)
-  * ![preview](k8s-3.png)
+  * ![preview](images/k8s-1.png)
+  * ![preview](images/k8s-2.png)
+  * ![preview](images/k8s-3.png)
  
 #### 2). Write a Pod Spec for Spring PetClinic
 y
@@ -41,8 +41,8 @@ spec:
       image: batchusivaji/raj:1.0
       ports:
         - containerPort: 8080
-  ![preview](k8s-4.png)
-  ![preview](k8s-5.png)
+  ![preview](images/k8s-4.png)
+  ![preview](images/k8s-5.png)
 
 ###  Write a Pod Spec for nopcommerse
 ---
@@ -61,8 +61,8 @@ spec:
   * kubectl get pods -o wide
   * kubectl describe pods (podname)
   
-  ![preview](k8s-6.png)
-  ![preview](k8s-7.png)
+  ![preview](images/k8s-6.png)
+  ![preview](images/k8s-7.png)
 
 ### K8S ARCHITECTURE
 
@@ -79,7 +79,7 @@ Worker nodes:
 * .Pods: A pod serves as a single application instance, and is considered the smallest unit in the object model of Kubernetes.
 * .kubelet: Each node contains a kubelet, which is a small application that can communicate with the Kubernetes control plane.
 * .kube-proxy:It handles all network communications outside and inside the cluster, forwarding traffic or replying on the packet filtering layer of the operating system. 
-* ![preview](k8s-8.png)
+* ![preview](images/k8s-8.png)
   
 
 ### GAME OF LIFE
@@ -100,8 +100,8 @@ spec:
   * kubectl get pods -o wide
   * kubectl describe pods (podname)
   * kubectl delete pods --all
-  ![preview](k8s-9.png)
-  ![preview](k8s-10.png)
+  ![preview](images/k8s-9.png)
+  ![preview](images/k8s-10.png)
 #### REPICASET manifest file
  * kubectl apply -f <replicaset.yml>     - 
   * kubectl get pods

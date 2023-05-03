@@ -109,7 +109,7 @@ spec:
   ![preview](images/k8s-9.png)
   ![preview](images/k8s-10.png)
 -----------------------------------------------------------------
-#### REPLICASET manifest file
+ REPLICASET manifest file
  * kubectl apply -f <replicaset.yml>     - 
   * kubectl get pods
   * kubectl get pods -o wide

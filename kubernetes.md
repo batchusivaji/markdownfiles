@@ -218,9 +218,9 @@ spec:
 ```
 ![preview](images/k8s-18.png)
 ![preview](images/k8s-19.png)
-![preview](images/docker19.png)
 ![preview](images/k8s-20.png)
-  
+![preview](images/k8s-21.png)
+![preview](images/k8s-22.png)  
  
  ### OnFailure manifeat file
  ```yml

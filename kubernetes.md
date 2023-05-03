@@ -20,7 +20,7 @@ spec:
       ports:
         - containerPort: 5000
 
-
+```
 Now we have to apply below commands
   * kubectl apply -f <manifest.yml>
   * kubectl get pods
@@ -43,6 +43,7 @@ spec:
       image: batchusivaji/raj:1.0
       ports:
         - containerPort: 8080
+ ```
   ![preview](images/k8s-4.png)
   ![preview](images/k8s-5.png)
 ----------------------------------------------------------------------------
@@ -58,6 +59,7 @@ spec:
       image: batchusivaji/rajshekar:1.0
       ports:
         - containerPort: 5000
+ ```
   * kubectl apply -f <nop.yml>
   * kubectl get pods
   * kubectl get pods -o wide
@@ -98,6 +100,7 @@ spec:
       image: batchusivaji/kishore:1.1
       ports:
         - containerPort: 8080
+```
   * kubectl apply -f <gol.yml>     - 
   * kubectl get pods
   * kubectl get pods -o wide

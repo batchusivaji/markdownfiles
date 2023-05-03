@@ -31,8 +31,7 @@ Now we have to apply below commands
   * ![preview](images/k8s-3.png)
  
 #### 2). Write a Pod Spec for Spring PetClinic
-yml
----
+```yml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -47,8 +46,7 @@ spec:
   ![preview](images/k8s-5.png)
 
 ###  Write a Pod Spec for nopcommerse
-yml
----
+```yml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -87,8 +85,7 @@ Worker nodes:
 
 ### GAME OF LIFE
 first we create k8s pods like gol 
-yml
----
+```yml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -113,7 +110,7 @@ spec:
   * kubectl describe pods (podname)
   * kubectl delete pods --all
 
----
+```yml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:

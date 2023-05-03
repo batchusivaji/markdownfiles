@@ -2,6 +2,7 @@
                       ---------------
 ### 1) Write a Pod Spec for Spring PetClinic as well as nopCommerce Applications at the same spec EXPOSE ports spc & nop
 ANS: first we create k8s pods like spc & nop
+ yml
  ---
 apiVersion: v1
 kind: Pod
@@ -29,7 +30,7 @@ Now we have to apply below commands
   * ![preview](images/k8s-3.png)
  
 #### 2). Write a Pod Spec for Spring PetClinic
-y
+yml
 ---
 apiVersion: v1
 kind: Pod
@@ -45,6 +46,7 @@ spec:
   ![preview](images/k8s-5.png)
 
 ###  Write a Pod Spec for nopcommerse
+yml
 ---
 apiVersion: v1
 kind: Pod
@@ -84,6 +86,7 @@ Worker nodes:
 
 ### GAME OF LIFE
 first we create k8s pods like gol 
+yml
 ---
 apiVersion: v1
 kind: Pod

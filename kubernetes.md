@@ -185,4 +185,6 @@ spec:
 ![preview](images/k8s-16.png)
 ![preview](images/k8s-17.png)
  
- ###
+ ### OnFailure manifeat file
+ ```yml
+ 

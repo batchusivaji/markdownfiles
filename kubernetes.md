@@ -184,6 +184,43 @@ spec:
 ```
 ![preview](images/k8s-16.png)
 ![preview](images/k8s-17.png)
+
+### CronJob
+```yml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronob-labels
+  labels:
+    app: lebel-nginix
+spec:
+  schedule: 1 * * * *
+  jobTemplate:
+    metadata:
+      name: cronob-labels
+      labels:
+        app: label-nginix
+    spec:
+      template:
+        metadata:
+          labels:
+            app: label-nginix
+          name: cronob-labels
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: spc
+              image: redis:7.2 
+              args:
+                - sleep
+              command:
+                - 10s
+```
+![preview](images/k8s-18.png)
+![preview](images/k8s-19.png)
+![preview](images/docker19.png)
+![preview](images/k8s-20.png)
+  
  
  ### OnFailure manifeat file
  ```yml

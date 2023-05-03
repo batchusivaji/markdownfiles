@@ -30,7 +30,7 @@ Now we have to apply below commands
   * ![preview](images/k8s-2.png)
   * ![preview](images/k8s-3.png)
  
-#### 2). Write a Pod Spec for Spring PetClinic
+### 2). Write a Pod Spec for Spring PetClinic
 -----------------------------------------------------------------------
 ```yml
 apiVersion: v1
@@ -106,7 +106,7 @@ spec:
   ![preview](images/k8s-9.png)
   ![preview](images/k8s-10.png)
 -----------------------------------------------------------------
-#### REPICASET manifest file
+#### REPLICASET manifest file
  * kubectl apply -f <replicaset.yml>     - 
   * kubectl get pods
   * kubectl get pods -o wide

@@ -109,7 +109,7 @@ spec:
   ![preview](images/k8s-9.png)
   ![preview](images/k8s-10.png)
 -----------------------------------------------------------------
-# REPLICASET manifest file
+## REPLICASET manifest file
  * kubectl apply -f <replicaset.yml>     - 
   * kubectl get pods
   * kubectl get pods -o wide
@@ -140,5 +140,49 @@ spec:
           args:
             - sleep 
             - 10s
-
+```
+![preview](images/k8s-14.png)
+![preview](images/k8s-15.png)
+--------------------------------
+  ### restart always manifest file
   
+  ```yml
+apiVersion:	v1
+kind: Pod	
+metadata:
+  name: restartalways
+spec:
+  restartPolicy: Always
+  containers:
+    - name: jenkins
+      image: jenkins/jenkins:jdk11-hotspot-windowsservercore-2019
+      args:
+        - sleep
+        - 10s
+
+  ```
+![preview](images/k8s-11.png)
+![preview](images/k8s-12.png)
+![preview](images/k8s-12.png)
+----------------------------------------------------------------------------
+### Restart never
+
+```yml
+apiVersion:	v1
+kind: Pod	
+metadata:
+  name: restarnever
+spec:
+  restartPolicy: Never
+  containers:
+    - name: gameoflife
+      image: batchusivaji/kishore:1.1
+      args:
+        - sleep
+        - 1d 
+
+```
+![preview](images/k8s-16.png)
+![preview](images/k8s-17.png)
+ 
+ ###

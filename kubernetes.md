@@ -192,19 +192,19 @@ kind: CronJob
 metadata:
   name: cronob-labels
   labels:
-    app: lebel-nginix
+    app: lebel-redis
 spec:
   schedule: 1 * * * *
   jobTemplate:
     metadata:
       name: cronob-labels
       labels:
-        app: label-nginix
+        app: label-redis
     spec:
       template:
         metadata:
           labels:
-            app: label-nginix
+            app: label-redis
           name: cronob-labels
         spec:
           restartPolicy: OnFailure
@@ -215,13 +215,43 @@ spec:
                 - sleep
               command:
                 - 10s
+
+  
 ```
 ![preview](images/k8s-18.png)
 ![preview](images/k8s-19.png)
 ![preview](images/k8s-20.png)
 ![preview](images/k8s-21.png)
 ![preview](images/k8s-22.png)  
- 
+
+### Replication controller
+
+```yml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replication-controller
+  labels:
+    app: redis
+spec:
+  minReadySeconds: 2
+  replicas: 2
+  selector:
+    app: redis                
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          args:
+            - sleep
+            - 10s
+ ```
+ ![preview](images/k8s-23.png)
+ ![preview](images/k8s-24.png)
  ### OnFailure manifeat file
  ```yml
  

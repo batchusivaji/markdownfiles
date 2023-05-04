@@ -9,3 +9,20 @@ B) activity-2
    1) Explain Kubernetes architecture
    2) Setup k8s on single node using minikube and kind
    3) Run the Spring Pet Clinic
+c) Please ensure that, all the Classroom K8S Concepts covered so far, have to be practiced well both Technically and Theoretically as well for Interviews perspective like:
+
+* Pods / Containers
+
+* Jobs / CronJobs
+
+* ReplicaSets
+
+* Deployment
+
+* Service / Headless Service
+
+* Volumes / Persistent Volumes / Persistent Volume Claims
+
+* Stateful Sets and
+
+* Namespaces etc.

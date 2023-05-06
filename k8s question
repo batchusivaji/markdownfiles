@@ -12,17 +12,18 @@ B) activity-2
 c) Please ensure that, all the Classroom K8S Concepts covered so far, have to be practiced well both Technically and Theoretically as well for Interviews perspective like:
 
 * Pods / Containers
-
 * Jobs / CronJobs
-
 * ReplicaSets
-
 * Deployment
-
 * Service / Headless Service
-
 * Volumes / Persistent Volumes / Persistent Volume Claims
-
 * Stateful Sets and
-
 * Namespaces etc.
+d).
+    Create a MySQL pod with Stateful Set with 1 replica
+Create a nopCommerce deployment with 1 replica
+Create a Headless Service to interact with nopCommerce with MySQL 
+Create a Load Balancer to expose the nopCommerce to External World 
+NOTE: 
+
+Try to draw the Architecture Diagram for the above by using Draw.io Tool.

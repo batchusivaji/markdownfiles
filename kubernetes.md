@@ -297,6 +297,7 @@ spec:
 ![preview](images/k8s-27.png)
 ![preview](images/k8s-28.png)
 
+```yml
 ### # Deployments, ReplicaSets and Services
 
 These are all type of controllers. 
@@ -345,5 +346,5 @@ A service allows the communcation between one set of deployments with another.
 - Internal: IP is only reachable within the cluster 
 - External: endpoint available through node IP: port (called NodePort)
 - Load Balancer: Exposes application to the internet with a load balancer (available with a cloud provider)
-
+```
 

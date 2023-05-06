@@ -1,5 +1,5 @@
-                                         #   KUBERNETES
-                                          ---------------
+#                                                KUBERNETES
+                                          
 ### 1) Write a Pod Spec for Spring PetClinic as well as nopCommerce Applications at the same spec EXPOSE ports spc & nop
 ANS: first we create k8s pods like spc & nop
 -------------------------------------------------------------------
@@ -296,7 +296,6 @@ spec:
 ![preview](images/k8s-27.png)
 ![preview](images/k8s-28.png)
 
-```yml
 ### # Deployments, ReplicaSets and Services
 
 These are all type of controllers. 
@@ -345,5 +344,4 @@ A service allows the communcation between one set of deployments with another.
 - Internal: IP is only reachable within the cluster 
 - External: endpoint available through node IP: port (called NodePort)
 - Load Balancer: Exposes application to the internet with a load balancer (available with a cloud provider)
-```
 

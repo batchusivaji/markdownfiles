@@ -1,6 +1,6 @@
 ---
-##Create an alpine container in interactive mode and instal python 
-    ```yml
+###Create an alpine container in interactive mode and instal python 
+    
     docker container run -it --name alpine1 -P alpine:3.16
   1.  `apk add --update`
   2.  `apk add python3` 
@@ -8,7 +8,7 @@
   4.  ```
       ![preview](images/docker1.png)
       ![preview](images/docker2.png)
-  ```
+  
 ###Create an ubuntu container with sleep 1d then login user exec.Install python
   1. `docker container run -d --name py -P ubuntu:20.04 sleep 1d`,
   2. `docker container exec -it py /bin/bash`,

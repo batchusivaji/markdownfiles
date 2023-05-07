@@ -296,7 +296,7 @@ spec:
 ![preview](images/k8s-27.png)
 ![preview](images/k8s-28.png)
 ```yml
-apiversion: apiVersion specifies which version of the Kubernetes API to use to create the object
+apiversion : apiVersion specifies which version of the Kubernetes API to use to create the object
 kind: kind specifies the kind of object defined in this yaml file, here a Service
 metadata helps uniquely identify our Service object: we give it a name (myloadbalancer), and a label.
 spec: spec specifies the Service. It is of LoadBalancer type. We then go on to specify its ports. We can define many ports if we want but here we just specify the necessary port 8000 for our whoami app. Since 8000 is an HTTP ports: we add a name tag and call it http. targetPort is the port the container welcomes traffic (in our case necessarily 8000), port is the abstracted Service port. For simplicity, we set both as 8000, though we could change port to something else.
@@ -371,10 +371,10 @@ used to make sure a Pod is not published as available until the readinessProbe h
 
 ### LoadBalancer :
 this Service exposes a set of pods using an external load balancer. All managed Kubernetes offerings have their own implementation of it
-![preview](images/k8s-38.png)
+![preview](images/k8s-40.png)
 ![preview](images/loadbalancer.png)
 NodePort – the Service exposes a given port on each Node IP in the cluster.
-![preview](images/k8s-39.png)
+![preview](images/k8s-38.png)
 ![preview](images/k8s.41.png)
 ### Ingress:  
 NodePort and LoadBalancer let you expose a service by specifying that value in the service’s type. Ingress, on the other hand, is a completely independent resource to your service. You declare, create and destroy it separately to your services.
@@ -382,7 +382,7 @@ NodePort and LoadBalancer let you expose a service by specifying that value in t
 This makes it decoupled and isolated from the services you want to expose. It also helps you to consolidate routing rules into one place.
 
 The one downside is that you need to configure an Ingress Controller for your cluster. But that’s pretty easy—in this example, we’ll use the Nginx Ingress Controller.
-![preview](images/ingress.png)
+![preview](images/ingress%201.png)
 
 ### Liveness and Readiness probe
 ```yml

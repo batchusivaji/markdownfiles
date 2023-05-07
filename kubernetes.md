@@ -371,7 +371,7 @@ used to make sure a Pod is not published as available until the readinessProbe h
 
 ### LoadBalancer :
 this Service exposes a set of pods using an external load balancer. All managed Kubernetes offerings have their own implementation of it
-![preview](images/docker38.png)
+![preview](images/k8s-38.png)
 ![preview](images/loadbalancer.png)
 NodePort – the Service exposes a given port on each Node IP in the cluster.
 ![preview](images/k8s-39.png)

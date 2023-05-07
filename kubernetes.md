@@ -295,8 +295,14 @@ spec:
 ![preview](images/k8s-26.png)
 ![preview](images/k8s-27.png)
 ![preview](images/k8s-28.png)
-
-### # Deployments, ReplicaSets and Services
+```yml
+apiversion: apiVersion specifies which version of the Kubernetes API to use to create the object
+kind: kind specifies the kind of object defined in this yaml file, here a Service
+metadata helps uniquely identify our Service object: we give it a name (myloadbalancer), and a label.
+spec: spec specifies the Service. It is of LoadBalancer type. We then go on to specify its ports. We can define many ports if we want but here we just specify the necessary port 8000 for our whoami app. Since 8000 is an HTTP ports: we add a name tag and call it http. targetPort is the port the container welcomes traffic (in our case necessarily 8000), port is the abstracted Service port. For simplicity, we set both as 8000, though we could change port to something else.
+selector: selector tells the Service which pods to redirect to: in this case pods with containers running the app we called mydeployment Save and exit the file.
+```
+## Deployments, ReplicaSets and Services
 
 These are all type of controllers. 
 
@@ -344,4 +350,89 @@ A service allows the communcation between one set of deployments with another.
 - Internal: IP is only reachable within the cluster 
 - External: endpoint available through node IP: port (called NodePort)
 - Load Balancer: Exposes application to the internet with a load balancer (available with a cloud provider)
+```yml
+Liveness probe: used to continue checking the availability of a Pod
+Readiness Probe: used to make sure a Pod is not published as available until the readinessProbe has been able to access it.
+Startup Probe: If we define a startup probe for a container, then Kubernetes does not execute the liveness or readiness probes, as long as the container's startup probe does not succeed.
+## configure pods:
+initialDelaySeconds: Number of seconds after the container has started before liveness or readiness probes are initiated. Defaults to 0 seconds. Minimum value is 0.
+periodSeconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+timeoutSeconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1.
+successThreshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes. Minimum value is 1.
+failureThreshold: When a probe fails, Kubernetes will try failureThreshold times before giving up. Giving up in case of liveness probe means restarting the container. In case of readiness probe the Pod will be marked Unready. Defaults to 3. Minimum value is 1.
+### ```yml
+LoadBalancer – this Service exposes a set of pods using an external load balancer. All managed Kubernetes offerings have their own implementation of it
+![preview](images/docker38.png)
+![preview](images/loadbalancer.png)
+NodePort – the Service exposes a given port on each Node IP in the cluster.
+![preview](images/k8s-39.png)
+![preview](images/k8s.41.png)
+Ingress:  
+NodePort and LoadBalancer let you expose a service by specifying that value in the service’s type. Ingress, on the other hand, is a completely independent resource to your service. You declare, create and destroy it separately to your services.
 
+This makes it decoupled and isolated from the services you want to expose. It also helps you to consolidate routing rules into one place.
+
+The one downside is that you need to configure an Ingress Controller for your cluster. But that’s pretty easy—in this example, we’ll use the Nginx Ingress Controller.
+![preview](images/ingress.png)
+```
+### Liveness and Readiness probe
+```yml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jenkis-sever-healthchecks
+  labels:
+    app: server
+spec:
+  minReadySeconds: 1
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: developer
+        operator: In
+        values:
+          - web
+          - dev
+      - key: tester
+        operator: NotIn
+        values:
+          - qt
+          - ihub
+  template:
+    metadata:
+      name: qualityThought
+      labels:
+        developer: dev
+        tester: deploy 
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:2.387.3-lts
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 1
+            initialDelaySeconds: 1
+            periodSeconds: 10
+            successThreshold: 2
+            timeoutSeconds: 1
+            exec:
+              command:
+                - sleep
+                - 10mb
+          livenessProbe:
+            failureThreshold: 2
+            initialDelaySeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+            exec:
+              command:
+                - sleep
+                - 5s
+```
+![preview](images/k8s-32.png)
+![preview](images/k8s-33.png)
+![preview](images/k8s-34.png)
+![preview](images/k8s-35.png)

@@ -2,10 +2,7 @@
 
 # ...................  Kubernetes Interview Questions  ....................
 
-```yml
 #### 1. So, what have you done with Kubernetes? This question comes up all the time!
-
-#####   Answer: 
 
 #####     While this seems easy, a prepared and practiced answer is significantly better than an impromptu one.
 

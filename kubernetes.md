@@ -350,31 +350,40 @@ A service allows the communcation between one set of deployments with another.
 - Internal: IP is only reachable within the cluster 
 - External: endpoint available through node IP: port (called NodePort)
 - Load Balancer: Exposes application to the internet with a load balancer (available with a cloud provider)
-```yml
-Liveness probe: used to continue checking the availability of a Pod
-Readiness Probe: used to make sure a Pod is not published as available until the readinessProbe has been able to access it.
-Startup Probe: If we define a startup probe for a container, then Kubernetes does not execute the liveness or readiness probes, as long as the container's startup probe does not succeed.
+###
+### Liveness probe:
+used to continue checking the availability of a Pod
+### Readiness Probe:
+used to make sure a Pod is not published as available until the readinessProbe has been able to access it.
+### Startup Probe:
+ If we define a startup probe for a container, then Kubernetes does not execute the liveness or readiness probes, as long as the container's startup probe does not succeed.
 ## configure pods:
-initialDelaySeconds: Number of seconds after the container has started before liveness or readiness probes are initiated. Defaults to 0 seconds. Minimum value is 0.
-periodSeconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
-timeoutSeconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1.
-successThreshold: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes. Minimum value is 1.
-failureThreshold: When a probe fails, Kubernetes will try failureThreshold times before giving up. Giving up in case of liveness probe means restarting the container. In case of readiness probe the Pod will be marked Unready. Defaults to 3. Minimum value is 1.
-### ```yml
-LoadBalancer – this Service exposes a set of pods using an external load balancer. All managed Kubernetes offerings have their own implementation of it
+### initialDelaySeconds:
+ Number of seconds after the container has started before liveness or readiness probes are initiated. Defaults to 0 seconds. Minimum value is 0.
+### periodSeconds:
+ How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+### timeoutSeconds:
+ Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1.
+### successThreshold:
+ Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes. Minimum value is 1.
+### failureThreshold:
+ When a probe fails, Kubernetes will try failureThreshold times before giving up. Giving up in case of liveness probe means restarting the container. In case of readiness probe the Pod will be marked Unready. Defaults to 3. Minimum value is 1.
+
+### LoadBalancer :
+this Service exposes a set of pods using an external load balancer. All managed Kubernetes offerings have their own implementation of it
 ![preview](images/docker38.png)
 ![preview](images/loadbalancer.png)
 NodePort – the Service exposes a given port on each Node IP in the cluster.
 ![preview](images/k8s-39.png)
 ![preview](images/k8s.41.png)
-Ingress:  
+### Ingress:  
 NodePort and LoadBalancer let you expose a service by specifying that value in the service’s type. Ingress, on the other hand, is a completely independent resource to your service. You declare, create and destroy it separately to your services.
 
 This makes it decoupled and isolated from the services you want to expose. It also helps you to consolidate routing rules into one place.
 
 The one downside is that you need to configure an Ingress Controller for your cluster. But that’s pretty easy—in this example, we’ll use the Nginx Ingress Controller.
 ![preview](images/ingress.png)
-```
+
 ### Liveness and Readiness probe
 ```yml
 apiVersion: apps/v1

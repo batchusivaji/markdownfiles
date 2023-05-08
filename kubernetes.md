@@ -445,4 +445,157 @@ spec:
 ![preview](images/k8s-32.png)
 ![preview](images/k8s-33.png)
 ![preview](images/k8s-34.png)
-![preview](images/k8s-35.png)
+![preview](images/k8s-35.png)Pod
+```yml
+Collections of containers collocated in a single machine
+
+Service
+
+Load balancer that can bring traffic to a collection of pods
+
+Deployment
+
+Replicate a container for availability or scale.
+
+Kubelet
+
+The primary node agent that runs on each node
+
+
+
+Kubernetes_Notes
+What is Kubernetes?
+Kubernetes is an orchestrator for containers like Swarm, runs on top of Docker usually as a set of APIs in containers.
+
+Provides API or CLI to manage container across servers.
+
+Many clouds provide it for you.
+
+Many vendors make a "distribution" of it.
+
+System parts
+Kubernetes: The whole orchestratuion system
+Kubectl: CLI to manage Kubernetes and manage apps.
+Node: Single server in the Kubernetes cluster.
+Kubelet: Kubernetes agent running on nodes.
+Control Plane: Set of containers that manage the cluster.
+Pods
+Basic unit of deployment, containers are always in pods.
+
+Controller: For creating/updating pods and other objects.
+
+Service: Endpoint to connect to a pod.
+
+Namespace: Filtered group of objects in cluster.
+
+Creating pods with kubectl
+First, be sure kubernetes its running:
+
+kubectl version
+
+Two ways to deploy Pods(containers): via CLI or via YAML.
+
+Example for the CLI:
+
+kubectl run my-nginx --image nginx
+
+Starting in version 1.18 (released March 2020), the kubectl run command only does one thing: create single pods. There were many reasons for this, but the big ones were to reduce the complexity of how the run command worked and to move other resource creation to the kubectl create command. The idea is that kubectl run is now similar to docker run. It creates a single pod, where docker run creates a single container.
+
+Scaling a ReplicaSet
+Example of scaling an existing Apache server replica:
+
+kubectl scale deploy/my-apache --replicas 2
+
+or
+
+kubectl scale deployment my-apache --replicas 2
+
+Inspecting Deployment Objects
+Showing your pods:
+
+kubectl get pods
+
+Basic Service Types:
+ClusterIP (default):
+Single, internal virtual IP allocated.
+Only reachable within the cluster (nodes and pods).
+Pods can reach service on apps port number.
+NodePort:
+High port allocated on each node.
+Port it's open on every node's IP.
+Anyone can connect (if they can reach node).
+Other pods need to be updated to this port.
+These services are always available in Kubernetes.
+Load Balancer:
+Controls a LB endpoint external to the cluster.
+Only available when infra provider gives you a LB (ej. AWS ELB).
+Creates NodePort+ClusterIP services, tells LB to send to NodePort.
+ExternalName:
+Adds CNAME DNS record to CoreDNS only.
+Not used for Pods, but for giving pods a DNS name to use for something outside Kubernetes.
+Anyone can connect (if they can reach node).
+Management techniques
+Run, Create and expose Generators
+Every resource in Kubernetes has a specification.
+kubectl create deployment sample --image nginx --dry-run -o yaml
+
+Declarative Kubernetes
+You can use kubctl apply to use a YAML file with a declarative approach, this it's a more complex format than Compose, but provides an improved flexibility and extensibility.
+
+Each file contains one or more manifests.
+Each manifest describes an API object(deployment, job, secret).
+Each manifest requires four parts (root key:values in the file):
+apiVersion:
+kind:
+metadata:
+spec:
+For obtaining a detailed explanation for all keys each kind supports:
+
+kubectl explain services.spec
+
+spec: can have sub spec: for other services.
+
+kubectl explain deployment.spec.template.spec.volumes.nfs.server
+
+we can also use the docs.
+
+
+ReplicationController:
+High availability
+Scaling can be done
+Loadbalancing setup
+Adding your pod to ReplicationController will make sure to create new/multiple replicas of pod automatically.
+
+What is Kubernetes?
+In simple terms, Kubernetes is a container orchestration tool. It helps in maintaining the containers.
+
+When we build a containerized application and if there are large number of such containers, we need tool such as Kubernetes that help us to manage those containers and automate our workflow.
+
+What features does Kubernetes provides?
+High Availability : The user should not have any downtime.
+
+Scalability: the application normally have very high response time.
+
+Disaster Recovery : backup and restore.
+
+Kubernetes basic terminologies
+Pods: Pods are the smallest and the most basic unit in Kubernetes. Each pod get their own IP address so that they can communicate. A pod may be running a service like any application usually within a container.
+Service: Service is logical set of pods and each pod will have their own service. Lifecycle of Pod and service are not interconnected. Service are generally categorized into:
+Internal
+External
+Node - A node is a single host in K8s. This is used to run virtual or physical machine. There may be multiple/single pods within a node.
+ReplicaSet: It is used to identify the particular number of pod replicas running inside a node.
+ConfigMap : It contains all the external configuration of our application like database URL. The reason we need this is because this acts as a central repo to other components so if we have to make any changes like change in DB_URL we can simply change here and all changees will be reflected back.
+⚠ DO NOT STORE CREDENTIALS ON CONFIGMAP.
+Secret: As name suggests it stores all the secret info like DB_USERNAME and DB_PASSWORD. We should always store such info in encrypted format rather than plain text.
+Volumes: This attaches a physical storage to the pod. Data mey be lost while resetting since it is not persistent.
+⚠ K8s does not manage data persistence.
+Deployment: We do not directly create a pod in K8s. We create blueprint of the pod and the rest is handled by K8s. The blueprint for creating pod is called deployment.
+Kubernetes Architecture
+The core architecture is that 3 process must be installed on every node. Nodes are cluster service that actually do the work. So, it is also called worker node.
+
+Those three processes are:
+
+Container Runtime
+Kubelets
+Kube-Proxy

@@ -295,14 +295,18 @@ spec:
 ![preview](images/k8s-26.png)
 ![preview](images/k8s-27.png)
 ![preview](images/k8s-28.png)
-```yml
-apiversion : apiVersion specifies which version of the Kubernetes API to use to create the object
-kind: kind specifies the kind of object defined in this yaml file, here a Service
+
+### apiversion :
+apiVersion specifies which version of the Kubernetes API to use to create the object
+### kind:
+kind specifies the kind of object defined in this yaml file, here a Service
 metadata helps uniquely identify our Service object: we give it a name (myloadbalancer), and a label.
-spec: spec specifies the Service. It is of LoadBalancer type. We then go on to specify its ports. We can define many ports if we want but here we just specify the necessary port 8000 for our whoami app. Since 8000 is an HTTP ports: we add a name tag and call it http. targetPort is the port the container welcomes traffic (in our case necessarily 8000), port is the abstracted Service port. For simplicity, we set both as 8000, though we could change port to something else.
-selector: selector tells the Service which pods to redirect to: in this case pods with containers running the app we called mydeployment Save and exit the file.
-```
-## Deployments, ReplicaSets and Services
+### spec:
+spec specifies the Service. It is of LoadBalancer type. We then go on to specify its ports. We can define many ports if we want but here we just specify the necessary port 8000 for our whoami app. Since 8000 is an HTTP ports: we add a name tag and call it http. targetPort is the port the container welcomes traffic (in our case necessarily 8000), port is the abstracted Service port. For simplicity, we set both as 8000, though we could change port to something else.
+### selector:
+selector tells the Service which pods to redirect to: in this case pods with containers running the app we called mydeployment Save and exit the file.
+
+# Deployments, ReplicaSets and Services
 
 These are all type of controllers. 
 
@@ -447,15 +451,19 @@ spec:
 ![preview](images/k8s-34.png)
 ![preview](images/k8s-35.png)
 `
-### pod: Collections of containers collocated in a single machine
+### pod:
+Collections of containers collocated in a single machine
 
-### Service:Load balancer that can bring traffic to a collection of pods
+### Service:
+Load balancer that can bring traffic to a collection of pods
 
-### Deployment: Replicate a container for availability or scale.
+### Deployment:
+Replicate a container for availability or scale.
 
-### Kubelet: The primary node agent that runs on each node
+### Kubelet:
+The primary node agent that runs on each node
 
-### What is Kubernetes?
+# What is Kubernetes?
 Kubernetes is an orchestrator for containers like Swarm, runs on top of Docker usually as a set of APIs in containers.
 
 Provides API or CLI to manage container across servers.
@@ -464,16 +472,25 @@ Many clouds provide it for you.
 
 Many vendors make a "distribution" of it.
 
-### System parts:
-### Kubernetes: The whole orchestratuion system
-### Kubectl: CLI to manage Kubernetes and manage apps.
-### Node: Single server in the Kubernetes cluster.
-### Kubelet: Kubernetes agent running on nodes.
-### Control Plane: Set of containers that manage the cluster.
-### Pods: Basic unit of deployment, containers are always in pods.
-### Controller: For creating/updating pods and other objects.
-### Service: Endpoint to connect to a pod.
-### Namespace: Filtered group of objects in cluster.
+# System parts:
+### Kubernetes:
+The whole orchestratuion system
+### Kubectl:
+CLI to manage Kubernetes and manage apps.
+### Node:
+Single server in the Kubernetes cluster.
+### Kubelet:
+Kubernetes agent running on nodes.
+### Control Plane:
+Set of containers that manage the cluster.
+### Pods:
+Basic unit of deployment, containers are always in pods.
+### Controller: 
+For creating/updating pods and other objects.
+### Service: 
+Endpoint to connect to a pod.
+### Namespace: 
+Filtered group of objects in cluster.
 
 Creating pods with kubectl
 First, be sure kubernetes its running:
@@ -494,7 +511,7 @@ Showing your pods:
 
 kubectl get pods
 
-## Basic Service Types:
+# Basic Service Types:
 ### ClusterIP (default):
 Single, internal virtual IP allocated.
 Only reachable within the cluster (nodes and pods).
@@ -516,21 +533,32 @@ In simple terms, Kubernetes is a container orchestration tool. It helps in maint
 
 When we build a containerized application and if there are large number of such containers, we need tool such as Kubernetes that help us to manage those containers and automate our workflow.
 
-### What features does Kubernetes provides?
-### High Availability : The user should not have any downtime.
-### Scalability: the application normally have very high response time.
-### Disaster Recovery : backup and restore.
+# What features does Kubernetes provides?
+### High Availability : 
+The user should not have any downtime.
+### Scalability: 
+the application normally have very high response time.
+### Disaster Recovery :
+ backup and restore.
 # Kubernetes basic terminologies
-### Pods: Pods are the smallest and the most basic unit in Kubernetes. Each pod get their own IP address so that they can communicate. A pod may be running a service like any application usually within a container.
-### Service: Service is logical set of pods and each pod will have their own service. Lifecycle of Pod and service are not interconnected. Service are generally categorized into:
+### Pods: 
+Pods are the smallest and the most basic unit in Kubernetes. Each pod get their own IP address so that they can communicate. A pod may be running a service like any application usually within a container.
+### Service: 
+Service is logical set of pods and each pod will have their own service. Lifecycle of Pod and service are not interconnected. Service are generally categorized into:
 Internal
 External
-### Node - A node is a single host in K8s. This is used to run virtual or physical machine. There may be multiple/single pods within a node.
-### ReplicaSet: It is used to identify the particular number of pod replicas running inside a node.
-### ConfigMap : It contains all the external configuration of our application like database URL. The reason we need this is because this acts as a central repo to other components so if we have to make any changes like change in DB_URL we can simply change here and all changees will be reflected back.
+### Node : 
+A node is a single host in K8s. This is used to run virtual or physical machine. There may be multiple/single pods within a node.
+### ReplicaSet:
+It is used to identify the particular number of pod replicas running inside a node.
+### ConfigMap :
+It contains all the external configuration of our application like database URL. The reason we need this is because this acts as a central repo to other components so if we have to make any changes like change in DB_URL we can simply change here and all changees will be reflected back.
 ⚠ DO NOT STORE CREDENTIALS ON CONFIGMAP.
-### Secret: As name suggests it stores all the secret info like DB_USERNAME and DB_PASSWORD. We should always store such info in encrypted format rather than plain text.
-### Volumes: This attaches a physical storage to the pod. Data mey be lost while resetting since it is not persistent.
+### Secret:
+As name suggests it stores all the secret info like DB_USERNAME and DB_PASSWORD. We should always store such info in encrypted format rather than plain text.
+### Volumes: 
+This attaches a physical storage to the pod. Data mey be lost while resetting since it is not persistent.
 ⚠ K8s does not manage data persistence.
-### Deployment: We do not directly create a pod in K8s. We create blueprint of the pod and the rest is handled by K8s. The blueprint for creating pod is called deployment.
+### Deployment:
+ We do not directly create a pod in K8s. We create blueprint of the pod and the rest is handled by K8s. The blueprint for creating pod is called deployment.
 

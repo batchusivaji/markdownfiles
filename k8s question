@@ -27,3 +27,17 @@ Create a Load Balancer to expose the nopCommerce to External World
 NOTE: 
 
 Try to draw the Architecture Diagram for the above by using Draw.io Tool.
+
+e) * create a instance in terraform
+   * create a mysql pod  
+f) Create a Kubernetes cluster using kubeadm
+    Deploy any application using kubectl
+    Backup Kubernetes I.e backup etcd
+    List out all the pod’s running in kube system namespace
+    Write down all the steps required to make Kubernetes highly available
+    Do a rolling update and roll back
+    Ensure usage of secret in MySQL and configmaps
+    Create a nop commerce deployment with MySQL statefulset and nop  
+      deployment
+
+g)

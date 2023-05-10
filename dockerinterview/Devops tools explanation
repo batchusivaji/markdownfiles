@@ -4,7 +4,7 @@ GIT: we are using git is VCS
 * enable branching strategies like QA,DEV branches we create
 * Managing GIT repository using various git commands like 
   push,pull,merge,clone,rebase few other commands
-* `Managing git user access` nothing but giving access to specific 
+* Managing git user access  nothing but giving access to specific 
   repositories or specific branches to secure your code . these are heigh 
   level activities which we can do in Git
 JENKINS: jenkins we are creating CI/CD jobs 
@@ -13,7 +13,7 @@ JENKINS: jenkins we are creating CI/CD jobs
  * Managing CI/CD jobs
  * Managing jenkins plugins nothing but addiing additional plugins
  * integration other Devops tools like git,maven,Ansible,SonarQube,.. and 
-   other devops toools with jenkins
+   other devops tools with jenkins
    these are the major activities which we can do in Jenkins
 ANSIBLE:
 * setting up the control sever` nothing but master

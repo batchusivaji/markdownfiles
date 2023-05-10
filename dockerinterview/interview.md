@@ -1,7 +1,7 @@
                     DOCKKER
-### 1).Tell us about yourself?
+### 1).Tell about yourself?
  Ans) My name is shivaji. I am currently living in hyderbad.I have done my gradution in computer science engineering from CRReddy college of enginerring at Andhra Univercity 
-* I have 4+ years experience in IT industry and around 3 years of experience on Aws and Devops tools
+* I have 3+ years experience in IT industry and around 2  years of experience on Aws and Devops tools
 * Now currently iam working in Cripson Logic as a Devops engineer
 * `now coming to my skills`
 * Hands-on experiance on shell scripting and linux

@@ -562,3 +562,167 @@ This attaches a physical storage to the pod. Data mey be lost while resetting si
 ### Deployment:
  We do not directly create a pod in K8s. We create blueprint of the pod and the rest is handled by K8s. The blueprint for creating pod is called deployment.
 
+### initcontainer
+
+```yml
+---
+apiVersion:	v1
+kind: Pod
+metadata:
+  name: initcontainers
+  labels:
+    run: webapp       
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      ports:
+        - containerPort: 80 
+  initContainers:
+    - name: alpine
+      image: alpine:latest
+      args:
+        - sleep
+        - 15s
+    - name: busybox
+      image: busybox:1.28
+      command:
+        - 'sh' 
+        - '-c'
+        - "until nslookup nginx-svf.default.svc.cluster.local; do echo waiting for myservice; sleep 2; done"
+       
+  #### service file
+
+  ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svf
+  labels:
+    run: nginx
+spec:
+  ports:
+    - name: nginx
+      port: 80
+      protocol: TCP
+      targetPort: 35000
+  selector:
+    run: nginx
+```
+  ![preview](images/k8s-43.png)
+  ![preview](images/k8s-44.png)
+  ![preview](images/k8s-45.png)
+### Run pod with specific resourses
+```yml
+apiVersion: apps/v1
+kind: ReplicaSet 
+metadata:
+  name: nginx-pod
+  labels:
+    run: pod
+spec:
+  minReadySeconds: 2
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: test
+    spec:
+      containers:
+        - name: nginx
+          image: latest
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+          readinessProbe:
+             httpGet:
+               path: /
+               port: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "256m"
+            limits:
+              memory: "256Mi"
+              cpu: "1000m"
+              
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svf
+  labels:
+    run: nginx
+spec:
+  ports:
+    - name: nginx
+      port: 80
+      protocol: TCP
+      targetPort: 35000
+  selector:
+    run: nginx
+    
+```
+![preview](images/k8s-47.png)
+![preview](images/k8s-48.png)
+![preview](images/k8s-49.png)
+![preview](images/k8s-50.png)
+![preview](images/k8s-51.png)
+
+### rollout-rollback
+```yml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels:
+    run: server
+spec: 
+  minReadySeconds: 5
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: qat
+        operator: In
+        values:
+          - test
+          - pause
+
+      - key: dev
+        operator: NotIn
+        values:
+          - deploy
+          - failure
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: pod-creation
+      labels:
+        qat: test
+        dev: env
+    spec:
+      containers: 
+        - name: httpd-service
+          image: httpd:2.4.57
+          ports:
+            - containerPort: 80
+  
+```
+![preview](images/k8s-52.png)
+![preview](images/k8s-53.png)
+![preview](images/k8s-54.png)
+![preview](images/k8s-55.png)
+![preview](images/k8s-56.png)
+
+### 

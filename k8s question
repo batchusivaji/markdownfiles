@@ -29,7 +29,7 @@ NOTE:
 Try to draw the Architecture Diagram for the above by using Draw.io Tool.
 
 e) * create a instance in terraform
-   * create a mysql pod  
+   * create a mysql pod in terraform 
 f) Create a Kubernetes cluster using kubeadm
     Deploy any application using kubectl
     Backup Kubernetes I.e backup etcd

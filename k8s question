@@ -28,8 +28,8 @@ NOTE:
 
 Try to draw the Architecture Diagram for the above by using Draw.io Tool.
 
-e) * create a instance in terraform
-   * create a mysql pod in terraform 
+e) * create a instance in terraform and install nopcommerse applicaion
+   * create a mysql pod in terraform and mysql database is connected to nopcommerse application 
 f) Create a Kubernetes cluster using kubeadm
     Deploy any application using kubectl
     Backup Kubernetes I.e backup etcd

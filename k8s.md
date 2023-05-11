@@ -1095,5 +1095,10 @@ If using NodePort for deployment:
 kubectl port-forward service/nginx-service 7080:8080
 ```
 
-#### DONT FORGET TO REMOVE ALL CLUSTERS AND NODEBALANCER AFTER TESTING.
-
+### gke cluster creation
+ * gcloud auth login --no-launch-browser
+ * gcloud components install gke-gcloud-auth-plugin
+ * gcloud info --run-diagnostics
+ * gcloud components install gke-gcloud-auth-plugin
+ * gcloud container clusters get-credentials k8s-engine --zone=us-central1-c --project=kubernetes-386214
+  

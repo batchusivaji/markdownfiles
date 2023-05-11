@@ -1,9 +1,4 @@
 # kubernetes
-
-
-
-
-
 ## 1.1 Common Commands
 
 | Name                                                         | Command                                                      |

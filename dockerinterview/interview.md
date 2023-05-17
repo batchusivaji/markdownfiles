@@ -1,10 +1,10 @@
   
-                   DOCKKER
+ *************************Personal Introduction*****************************
+                      
 
 ### 1).Tell about yourself?
  Ans) My name is shivaji. I am currently living in hyderbad.I have done my gradution in computer science engineering from CRReddy college of enginerring at Andhra Univercity 
-* I have 3+ years experience in IT industry and around 2  years of 
-  experience on Aws and Devops tools
+* I have 3+ years experience in IT industry
 * Now currently iam working in Cripson Logic as a Devops engineer
 * `now coming to my skills`
 * Hands-on experiance on shell scripting and linux
@@ -45,7 +45,7 @@
     * writing playbooks and roles 
     * Managing Ansible hosts
     * these are the major activities we can do majorly an 
-  Ansible
+       Ansible
 ### DOCKER:
     * setup docker environment
     * writing Dockerfiles

@@ -40,4 +40,9 @@ f) Create a Kubernetes cluster using kubeadm
     Create a nop commerce deployment with MySQL statefulset and nop  
       deployment
 
-g)
+g)1. Create 1 master node and 2 worker nodes – run app on node1 and db on 
+     node2 by using
+	 Node selector
+	 Affinity
+	 Taints and tolerances 	
+Create k8s cluster with version 1.25 and run any deployment(nginx/any) and then upgrade cluster to version 1.27  

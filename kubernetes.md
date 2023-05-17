@@ -725,4 +725,131 @@ spec:
 ![preview](images/k8s-55.png)
 ![preview](images/k8s-56.png)
 
-### 
+## RBAC(role base access control)
+### role &role binding
+```yml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata: 
+  name: qat-dev
+  namespace: dev
+rules:
+  - apiGroups: ["*"]
+    resources: [ pods ]
+    verbs: 
+      - get
+      - watch
+      - creat
+```yml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata: 
+  name: qat-dev
+  namespace: dev
+rules:
+  - apiGroups: ["*"]
+    resources: [ pods ]
+    verbs: 
+      - get
+      - watch
+      - creat
+```
+![preview](images/k8s-57.png)
+![preview](images/k8s-58.png)
+![preview](images/k8s-59.png)
+![preview](images/k8s-60.png)
+
+## kustamization
+
+### deployment manifest file
+
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: dev
+  labels:
+    app: nginx
+spec:
+  minReadySeconds: 4
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.23.4-perl
+          ports:
+            - containerPort: 80
+
+
+  ```
+  ### service manifest file
+  ```yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 32000
+  type: LoadBalancer
+
+  ```
+  ### horizontal pod autoscaling manifest file
+  ```yml
+  apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx
+  namespace: dev
+spec:
+  maxReplicas: 8
+  minReplicas: 2
+  scaleTargetRef:
+    kind: deployment
+    name: dev
+  targetCPUUtilizationPercentage: 65
+
+  ```
+  ### kustomization manifest file
+  ```yml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: dev
+resources:
+  - deployment.yml
+  - horizontal-pod-autoscaling.yml
+  - service.yml
+  - namespace.yml
+``` 
+### namespace manifest file
+```yml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+  ```
+  ![preview](images/k8s-61.png)
+  ![preview](images/k8s-62.png)
+  ![preview](images/k8s-64.png)
+  ![preview](images/k8s-65.png)

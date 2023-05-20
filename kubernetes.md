@@ -850,6 +850,32 @@ metadata:
 
   ```
   ![preview](images/k8s-61.png)
-  ![preview](images/k8s-62.png)
   ![preview](images/k8s-64.png)
+  ![preview](images/k8s-62.png)
   ![preview](images/k8s-65.png)
+  ![preview](images/k8s-66.png)
+
+
+  ## horizontal pod auto scalling(hpa)
+
+  hpa has maintaining the pods there are two types of pods maintaining pod
+
+  * we have to pass the commanand
+  * after that we have to apply below command
+      kubectl apply -f <mainifest file name>
+  * we have to create the hpa 
+    `kubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=10` 
+     then we have to check the hpa `kubectl get hpa`
+  * then after that we have to increase or scaling the load
+     `kubectl scale --replicas=10 -f <mainifest file name>`
+  * we have to check the pods then we will automatically increase the pods
+   it will depend on the cpu percentage after that we have to enter `cntrl+C` 
+   then automatically decrease the pods that means killing the rs or pods
+  
+      `kubectl get hpa nginx --watch`
+
+
+![preview](images/hpa-1.png)
+![preview](images/2.jpeg)
+![preview](images/3.jpeg)
+![preview](images/4.jpeg)

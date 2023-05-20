@@ -859,10 +859,10 @@ metadata:
   ## horizontal pod auto scalling(hpa)
 
   hpa has maintaining the pods there are two types of pods maintaining pod
-
+  * we have to manifest
   * we have to pass the commanand
   * after that we have to apply below command
-      kubectl apply -f <mainifest file name>
+      kubectl apply -f mainifest file name
   * we have to create the hpa 
     `kubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=10` 
      then we have to check the hpa `kubectl get hpa`

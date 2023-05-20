@@ -41,7 +41,7 @@ kubectl describe pods
 
 #### To delete pods:
 ```
-kubectl delete pods mywebsite
+kubectl delete pods mypod-name
 ```
 
 #### To apply a kubernetes deployment file:

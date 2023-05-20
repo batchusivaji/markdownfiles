@@ -857,7 +857,69 @@ metadata:
 
 
   ## horizontal pod auto scalling(hpa)
+```yml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    run: nginx
+spec: 
+  minReadySeconds: 3
+  replicas: 2 
+  selector:
+    matchExpressions:
+      - key: qat
+        operator: In
+        values:
+          - test
+          - pause
 
+      - key: dev
+        operator: NotIn
+        values:
+          - deploy
+          - failure
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: pod-creation
+      labels:
+        qat: test
+        dev: env
+    spec:
+      containers: 
+        - name: nginx
+          image: nginx:1.23
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "80Mi"
+              cpu: "500m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector:
+    run: nginx
+  ports:
+    - name: nginx
+      port: 80
+      protocol: TCP
+      targetPort: 35000
+  
+```
   hpa has maintaining the pods there are two types of pods maintaining pod
   * we have to manifest
   * we have to pass the commanand

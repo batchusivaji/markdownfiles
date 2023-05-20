@@ -876,6 +876,6 @@ metadata:
 
 
 ![preview](images/hpa-1.png)
-![preview](images/2.jpeg)
-![preview](images/3.jpeg)
-![preview](images/4.jpeg)
+![preview](images/hpa-2.png)
+![preview](images/hpa-3.png)
+![preview](images/hpa-4.png)

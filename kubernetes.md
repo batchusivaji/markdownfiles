@@ -46,6 +46,43 @@ spec:
   ![preview](images/k8s-4.png)
   ![preview](images/k8s-5.png)
 ----------------------------------------------------------------------------
+### gol
+```yml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gameoflife
+spec:
+  containers:
+    - name: gol
+      image: batchusivaji/kishore:1.1
+      ports:
+        - containerPort: 8080
+```
+![preview](images/batch-2.png)
+
+### Job manifest file
+```yml
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job
+spec:
+  backoffLimit: 2
+  template:
+    metadata:
+      name: alpine
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: nginx-job
+          image: nginx
+          ports:
+            - containerPort: 80  
+  ```
+![preview](images/batch-1.png)
 ###  Write a Pod Spec for nopcommerse
 ```yml
 apiVersion: v1
@@ -66,26 +103,7 @@ spec:
   
   ![preview](images/k8s-6.png)
   ![preview](images/k8s-7.png)
-  ----------------------------------------------------------------------
 
-## K8S ARCHITECTURE
-
-* .Kubernetes is an architecture that offers a loosely coupled mechanism for service discovery across a cluster. A Kubernetes cluster has one or more control planes, and one or more compute nodes.
-* .Environments running Kubernetes consist of the following key components:
-* .Control plane:It manges the k8s clusters and Workloads and it has componetns like API server,Schedular and control manger
-* .API Server:It servers as front end for k8s to communicate with control plane componets and worker nodes and handling external and internal request.
-* .Schedular:This component is responsible for scheduling pods on specific nodes according to automated workflows.
-* .Control manger:The Kubernetes controller manager is a control loop that monitors and regulates the state of a Kubernetes cluster.
-* .etcd:It is component in control plane which stores the data of cluster state and configuration.
-* .cloud-controller-manager:This component can embed cloud-specific control logic - for example, it can access the cloud provider’s load balancer service.
-Worker nodes:
-* .Nodes: Nodes are physical or virtual machines that can run pods as part of a Kubernetes cluster. A cluster can scale up to 5000 nodes.
-* .Pods: A pod serves as a single application instance, and is considered the smallest unit in the object model of Kubernetes.
-* .kubelet: Each node contains a kubelet, which is a small application that can communicate with the Kubernetes control plane.
-* .kube-proxy:It handles all network communications outside and inside the cluster, forwarding traffic or replying on the packet filtering layer of the operating system. 
-* ![preview](images/k8s-8.png)
-  
-----------------------------------------------------------------------------
 ### GAME OF LIFE
 first we create k8s pods like gol 
 ```yml
@@ -107,6 +125,59 @@ spec:
   * kubectl delete pods --all
   ![preview](images/k8s-9.png)
   ![preview](images/k8s-10.png)
+## Restart Polices
+### Restart Always
+```yml
+---
+apiVersion:	v1
+kind: Pod	
+metadata:
+  name: restartalways
+spec:
+  restartPolicy: Always
+  containers:
+    - name: jenkins
+      image: jenkins/jenkins:jdk11-hotspot-windowsservercore-2019
+      args:
+        - sleep
+        - 10s
+```
+![preview](images/restart-2png.png)
+### Restart Never
+```yml
+---
+apiVersion:	v1
+kind: Pod	
+metadata:
+  name: restarnever
+spec:
+  restartPolicy: Never
+  containers:
+    - name: gameoflife
+      image: batchusivaji/kishore:1.1
+      args:
+        - sleep
+        - 1d
+  ```
+  ![preview](images/restart-3.png)
+### Restart Onfailure
+```yml
+---
+apiVersion:	v1
+kind: Pod	
+metadata:
+  name: restarnever
+spec:
+  restartPolicy: Never
+  containers:
+    - name: gameoflife
+      image: batchusivaji/kishore:1.1
+      args:
+        - sleep
+        - 1d
+```
+![preview](images/restart-4.png)
+
 -----------------------------------------------------------------
 ## REPLICASET manifest file
  * kubectl apply -f <replicaset.yml>     - 
@@ -138,10 +209,14 @@ spec:
           image: alpine
           args:
             - sleep 
-            - 10s
+            - 1s
 ```
 ![preview](images/k8s-14.png)
-![preview](images/k8s-15.png)
+![preview](images/replicasets-1.png)
+![preview](images/replicasets-2.png)
+![preview](images/replicasets-3.png)
+
+
 --------------------------------
   ### restart always manifest file
   
@@ -218,11 +293,13 @@ spec:
   
 ```
 ![preview](images/k8s-18.png)
+![preview](images/cron.png)
 ![preview](images/k8s-19.png)
 ![preview](images/k8s-20.png)
 ![preview](images/k8s-21.png)
 ![preview](images/k8s-22.png) 
 ![preview](images/k8s-29.png)
+
 
 ### Replication controller
 
@@ -252,6 +329,8 @@ spec:
  ```
  ![preview](images/k8s-23.png)
  ![preview](images/k8s-24.png)
+### Imperative way
+![preview](images/imperative.png)
 
  ### Match-expressions using manifest file
  ```yml

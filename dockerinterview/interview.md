@@ -2,7 +2,7 @@
  *************************Personal Introduction*****************************
                       
 
-### 1).Tell about yourself?
+### 1).Tell me about yourself?
  Ans) My name is shivaji. I am currently living in hyderbad.I have done my gradution in computer science engineering from CRReddy college of enginerring at Andhra Univercity 
 * I have 3+ years experience in IT industry
 * Now currently iam working in Cripson Logic as a Devops engineer
